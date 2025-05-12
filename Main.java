@@ -13,8 +13,21 @@
 //onoma: GEORGIOS
 //epitheto: FITIKIDES
 
-public class Main {
-    public static void main(String[] args) {
-
-    }
-}
+import java.util.*; 
+ 
+public class Main { 
+    public static void main(String[] args) { 
+        Movie  m  =  new  Movie("Inception",  2010,  List.of("Sci-Fi",  "Action"), "Christopher Nolan"); 
+        User u = new User("alice"); 
+ 
+        Review r = new BasicReview(u, 9, "Mind-blowing!", m); 
+        m.addReview(r); 
+        u.addReview(r); 
+ 
+        m.printDetails(); 
+        System.out.println(); 
+        u.printDetails(); 
+        System.out.println(); 
+        r.printDetails(); 
+    } 
+} 
