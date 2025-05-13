@@ -1,7 +1,7 @@
-//AM:
-//email:
-//onoma:
-//epitheto:
+//AM:3240177
+//email: p3240177@aueb.gr
+//onoma: IFIGENEIA
+//epitheto: RAPTI
 
 //AM: 3240033
 //email: p3240033@aueb.gr
@@ -17,17 +17,21 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Movie m = new Movie("Inception", 2010, List.of("Sci-Fi", "Action"), "Christopher Nolan");
-        User u = new User("alice");
+        Movie movie = new Movie("Inception", 2010, List.of("Sci-Fi", "Action"), "Christopher Nolan");
+        User user = new User("alice");
 
-        Review r = new BasicReview(u, 9, "Mind-blowing!", m);
-        m.addReview(r);
-        u.addReview(r);
+        BasicReview basicReview = new BasicReview(user, 9, movie);
 
-        m.printDetails();
+        VerifiedReview verifiedReview = new VerifiedReview(user, 10, movie);
+
+        movie.printDetails();
         System.out.println();
-        u.printDetails();
+        user.printDetails();
         System.out.println();
-        r.printDetails();
+        basicReview.printDetails();
+
+        verifiedReview.printDetails();
+
+        System.out.println("Inception total rating: " + movie.getAverageRating());
     }
 }
