@@ -1,3 +1,3 @@
-public interface Printable { 
-    void printDetails(); 
+public interface Printable {
+    void printDetails();
 }

@@ -1,46 +1,47 @@
-public abstract class Review implements Printable { 
-    //attributes
-    protected User user; 
-    protected int rating; 
-    protected String comment; 
-    protected Movie movie; 
- 
-    //constructor
-    public Review(User user, int rating, String comment, Movie movie) { 
-        this.user = user; 
-        this.rating = rating; 
-        this.comment = comment; 
-        this.movie = movie; 
-    } 
+public abstract class Review implements Printable {
+    // attributes
+    protected User user;
+    protected int rating;
+    protected String comment;
+    protected Movie movie;
 
-    //methods
-    public abstract int getWeightedRating(); 
- 
-    //print details
-    public void printDetails() { 
+    // constructor
+    public Review(User user, int rating, String comment, Movie movie) {
+        this.user = user;
+        this.rating = rating;
+        this.comment = comment;
+        this.movie = movie;
+    }
+
+    // methods
+    public abstract int getWeightedRating();
+
+    // print details
+    public void printDetails() {
         System.out.println(this);
-    } 
-
-    //getters
-    public User getUser() { 
-        return user; 
     }
 
-    public int getRating() { 
-        return rating; 
+    // getters
+    public User getUser() {
+        return user;
     }
 
-    public String getComment() { 
-        return comment; 
+    public int getRating() {
+        return rating;
     }
 
-    public Movie getMovie() { 
-        return movie; 
+    public String getComment() {
+        return comment;
     }
 
-    //toString
+    public Movie getMovie() {
+        return movie;
+    }
+
+    // toString
     @Override
     public String toString() {
-        return user.getUsername() + " rated " + movie.getTitle() + " with " + rating + "/10" + ((comment != null && !comment.isEmpty()) ? "\nComment: " + comment :  "");
+        return user.getUsername() + " rated " + movie.getTitle() + " with " + rating + "/10"
+                + ((comment != null && !comment.isEmpty()) ? "\nComment: " + comment : "");
     }
 }
