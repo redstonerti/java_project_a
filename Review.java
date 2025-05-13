@@ -11,6 +11,17 @@ public abstract class Review implements Printable {
         this.rating = rating;
         this.comment = comment;
         this.movie = movie;
+        user.addReview(this);
+        movie.addReview(this);
+    }
+
+    public Review(User user, int rating, Movie movie) {
+        this.user = user;
+        this.rating = rating;
+        this.comment = null;
+        this.movie = movie;
+        user.addReview(this);
+        movie.addReview(this);
     }
 
     // methods

@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Movie implements Printable {
-    // atributes
+    // attributes
     private String title;
     private int year;
     private List<String> genres;
@@ -35,7 +35,8 @@ public class Movie implements Printable {
         for (Review r : reviews) {
             total += r.getWeightedRating();
         }
-        return (double) total / reviews.size();
+        double finalRating = (double) total / reviews.size();
+        return finalRating > 10 ? 10 : finalRating;
     }
 
     // print details
