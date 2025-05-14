@@ -8,6 +8,6 @@ public class VerifiedReview extends Review {
     }
 
     public int getWeightedRating() {
-        return (int) Math.round((float) rating * 1.3);
+        return (int) Math.round((float) this.getRating() * 1.3);
     }
 }

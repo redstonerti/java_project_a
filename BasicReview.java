@@ -8,6 +8,6 @@ public class BasicReview extends Review {
     }
 
     public int getWeightedRating() {
-        return rating;
+        return this.getRating();
     }
 }

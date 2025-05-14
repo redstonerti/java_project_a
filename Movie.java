@@ -8,6 +8,7 @@ public class Movie implements Printable {
     private String director;
     private List<Review> reviews;
     private List<Movie> relatedMovies;
+    private static List<Movie> allMovies = new ArrayList<>();
 
     // constructor
     public Movie(String title, int year, List<String> genres, String director) {
@@ -17,6 +18,7 @@ public class Movie implements Printable {
         this.director = director;
         this.reviews = new ArrayList<Review>();
         this.relatedMovies = new ArrayList<Movie>();
+        allMovies.add(this);
     }
 
     // methods
@@ -39,9 +41,35 @@ public class Movie implements Printable {
         return finalRating > 10 ? 10 : finalRating;
     }
 
+    public static Map<String, Movie> getHighestRatedByGenre(){
+        Map<String, Movie> highestRatedByGenre = new HashMap<>();
+        for (Movie movie : getAllMovies()) {
+            for (String genre : movie.getGenres()) {
+                Movie currentBest = highestRatedByGenre.get(genre);
+                if (currentBest == null || movie.getAverageRating() > currentBest.getAverageRating()) {
+                    highestRatedByGenre.put(genre, movie);
+                }
+            }
+        }
+        return highestRatedByGenre;
+    }
+
+    public List<User> getReviewers() {
+        List<User> reviewers = new ArrayList<>();
+        for (Review review : this.getReviews()) {
+            if (!reviewers.contains(review.getUser())) {
+                reviewers.add(review.getUser());
+            }
+        }
+        return reviewers;
+    }
     // print details
     public void printDetails() {
-        System.out.println(this);
+        System.out.println("Title: " + title);
+        System.out.println("Year: " + year);
+        System.out.println("Genres: " + genres);
+        System.out.println("Director: " + director);
+        System.out.println("Average Rating: " + getAverageRating());
     }
 
     // getters
@@ -66,16 +94,23 @@ public class Movie implements Printable {
     }
 
     public List<Movie> getRelatedMovies() {
+        for (Movie movie : getAllMovies()) {
+            for (String genre : movie.getGenres()) {
+                if (this.getGenres().contains(genre) && !this.equals(movie)) {
+                    this.addRelatedMovie(movie);
+                }
+            }
+        }
         return new ArrayList<>(relatedMovies);
+    }
+
+    public static List<Movie> getAllMovies() {
+        return new ArrayList<>(allMovies);
     }
 
     // toString
     @Override
     public String toString() {
-        return "Title: " + title + "\n"
-                + "Year: " + year + "\n"
-                + "Genres: " + genres + "\n"
-                + "Director: " + director + "\n"
-                + "Average Rating: " + getAverageRating();
+        return title;
     }
 }

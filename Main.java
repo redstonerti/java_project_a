@@ -18,20 +18,31 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Movie movie = new Movie("Inception", 2010, List.of("Sci-Fi", "Action"), "Christopher Nolan");
+        Movie movie2 = new Movie("Family", 2010, List.of("Comedy", "Action"), "Jason Statham");
         User user = new User("alice");
+        User user2 = new User("bob");
 
         BasicReview basicReview = new BasicReview(user, 9, movie);
-
-        VerifiedReview verifiedReview = new VerifiedReview(user, 10, movie);
+        BasicReview basicReview2 = new BasicReview(user, 8, movie2);
+        VerifiedReview verifiedReview = new VerifiedReview(user2, 3, movie);
 
         movie.printDetails();
         System.out.println();
         user.printDetails();
         System.out.println();
         basicReview.printDetails();
-
+        System.out.println();
+        basicReview2.printDetails();
+        System.out.println();
         verifiedReview.printDetails();
-
+        System.out.println();
         System.out.println("Inception total rating: " + movie.getAverageRating());
+        System.out.println();
+        System.out.println("The highest rated movies for each genre are: " + Movie.getHighestRatedByGenre());
+        System.out.println();
+        System.out.println("Related movies for " + movie + ": " + movie.getRelatedMovies());
+        System.out.println();
+        System.out.println("Reviewrs of " + movie + ": " + movie.getReviewers());
+        System.out.println();
     }
 }
