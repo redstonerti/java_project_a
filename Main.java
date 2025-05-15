@@ -18,9 +18,11 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Movie movie = new Movie("Inception", 2010, List.of("Sci-Fi", "Action"), "Christopher Nolan");
-        Movie movie2 = new Movie("Family", 2010, List.of("Comedy", "Action"), "Jason Statham");
+        Movie movie2 = new Movie("Family", 2009, List.of("Comedy", "Action"), "Jason Statham");
         User user = new User("alice");
         User user2 = new User("bob");
+
+        List<Movie> movies = new ArrayList<>(Movie.getAllMovies());
 
         BasicReview basicReview = new BasicReview(user, 9, movie);
         BasicReview basicReview2 = new BasicReview(user, 8, movie2);
@@ -43,6 +45,12 @@ public class Main {
         System.out.println("Related movies for " + movie + ": " + movie.getRelatedMovies());
         System.out.println();
         System.out.println("Reviewrs of " + movie + ": " + movie.getReviewers());
+        System.out.println();
+        System.out.println("The highest rated movies for each genre with N=2 and X=5 are: " + Movie.getHighestRatedByGenre(2, 5));
+        System.out.println();
+
+        movies.sort(Movie.byYear);
+        System.out.println("Movies sorted by year: "+ movies);
         System.out.println();
     }
 }

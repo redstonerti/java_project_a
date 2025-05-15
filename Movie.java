@@ -54,6 +54,20 @@ public class Movie implements Printable {
         return highestRatedByGenre;
     }
 
+        public static Map<String, Movie> getHighestRatedByGenre(int N, double X){
+        Map<String, Movie> highestRatedByGenre = new HashMap<>();
+        for (Movie movie : getAllMovies()) {
+            for (String genre : movie.getGenres()) {
+                Movie currentBest = highestRatedByGenre.get(genre);
+                if ((currentBest == null || movie.getAverageRating() > currentBest.getAverageRating())
+                        && movie.getAverageRating() > X && movie.getReviews().size() >= N) {
+                    highestRatedByGenre.put(genre, movie);
+                }
+            }
+        }
+        return highestRatedByGenre;
+    }
+
     public List<User> getReviewers() {
         List<User> reviewers = new ArrayList<>();
         for (Review review : this.getReviews()) {
@@ -112,5 +126,52 @@ public class Movie implements Printable {
     @Override
     public String toString() {
         return title;
+    }
+
+    // comparators
+    public static Comparator<Movie> byYear = (m1, m2) -> Integer.compare(m1.getYear(), m2.getYear());
+
+    public static Comparator<Movie> byAverageRating = (m1, m2) -> Double.compare(m1.getAverageRating(), m2.getAverageRating());
+
+    public static Comparator<Movie> byTitle = (m1, m2) -> m1.getTitle().compareTo(m2.getTitle());
+
+    // searchers
+    public static List<Movie> searchByYear(int year) {
+        List<Movie> result = new ArrayList<>();
+        for (Movie movie : getAllMovies()) {
+            if (movie.getYear() == year) {
+                result.add(movie);
+            }
+        }
+        return result;
+    }
+
+    public static List<Movie> searchByDirector(String director) {
+        List<Movie> result = new ArrayList<>();
+        for (Movie movie : getAllMovies()) {
+            if (movie.getDirector().equalsIgnoreCase(director)) {
+                result.add(movie);
+            }
+        }
+        return result;
+    }
+
+    public static List<Movie> searchByGenre(String genre) {
+        List<Movie> result = new ArrayList<>();
+        for (Movie movie : getAllMovies()) {
+            if (movie.getGenres().contains(genre)) {
+                result.add(movie);
+            }
+        }
+        return result;
+    }
+
+    public static Movie searchByTitle(String title) {
+        for (Movie movie : getAllMovies()) {
+            if (movie.getTitle().equalsIgnoreCase(title)) {
+                return movie;
+            }
+        }
+        return null;
     }
 }
