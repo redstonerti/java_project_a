@@ -57,3 +57,4 @@
 - Removed the declaration of the attributes in the `VeridiedUser` class as they are inherited from the class User
 - Removed the initialization of the attributes in the `VerifiedUser` constructor as they are already initialized from `super(username)`
 - Removed the method `searchByTitle(String title)` from the class `Movie` as it is now implemented by the method `getSpecificMovie(String title)`
+- Removed `import java.util.*` from `VerifiedUser` as it is now not used
