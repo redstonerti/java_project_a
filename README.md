@@ -53,3 +53,7 @@
 - Added **VerifiedUser** class and made **VerifiedReview** only accept VerifiedUsers. It contains an enum with several authentication methods, as well as a `verify` method that can be overriden by the users of the framework.
 - Changed README formatting
 - Added more movies
+- Changed user to user2 in the `System.out.println()` of the try block in the `Main` class
+- Removed the declaration of the attributes in the `VeridiedUser` class as they are inherited from the class User
+- Removed the initialization of the attributes in the `VerifiedUser` constructor as they are already initialized from `super(username)`
+- Removed the method `searchByTitle(String title)` from the class `Movie` as it is now implemented by the method `getSpecificMovie(String title)`

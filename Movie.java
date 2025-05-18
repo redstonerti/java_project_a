@@ -177,13 +177,4 @@ public class Movie implements Printable {
         }
         return result;
     }
-
-    public static Movie searchByTitle(String title) {
-        for (Movie movie : getAllMovies()) {
-            if (movie.getTitle().equalsIgnoreCase(title)) {
-                return movie;
-            }
-        }
-        return null;
-    }
 }

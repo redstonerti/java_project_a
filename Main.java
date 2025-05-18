@@ -31,7 +31,7 @@ public class Main {
         VerifiedReview verifiedReview = null;
         try {
             user2 = new VerifiedUser("bob", VerifiedUser.VerificationMethod.Password);
-            System.out.println("User created: " + user.getUsername());
+            System.out.println("User created: " + user2.getUsername());
             verifiedReview = new VerifiedReview(user2, 3, movie);
         } catch (Exception e) {
             System.out.println(e.getMessage());
