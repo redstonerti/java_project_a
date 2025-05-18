@@ -18,7 +18,8 @@ public class User implements Printable {
 
     // print details
     public void printDetails() {
-        System.out.println(this);
+        System.out.println("User: " + username);
+        System.out.println("Reviews submitted: " + reviews.size());
     }
 
     // getters
@@ -33,7 +34,6 @@ public class User implements Printable {
     // toString
     @Override
     public String toString() {
-        return "User: " + username + "\n"
-                + "Reviews submitted: " + reviews.size();
+        return username;
     }
 }

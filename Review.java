@@ -29,7 +29,8 @@ public abstract class Review implements Printable {
 
     // print details
     public void printDetails() {
-        System.out.println(this);
+        System.out.println(user.getUsername() + " rated " + movie.getTitle() + " with " + rating + "/10"
+        + ((comment != null && !comment.isEmpty()) ? "\nComment: " + comment : ""));
     }
 
     // getters
