@@ -2,8 +2,6 @@ import java.util.*;
 
 public class VerifiedUser extends User {
     // attributes
-    protected String username;
-    protected List<Review> reviews;
 
     public enum VerificationMethod {
         Password,
@@ -24,7 +22,5 @@ public class VerifiedUser extends User {
         if (!verify(verificationMethod)) {
             throw new Exception("Verification failed for user: " + username);
         }
-        this.username = username;
-        this.reviews = new ArrayList<Review>();
     }
 }
