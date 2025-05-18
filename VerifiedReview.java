@@ -1,6 +1,6 @@
 public class VerifiedReview extends Review {
-    public VerifiedReview(User user, int rating, Movie movie) {
-        super(user, rating, movie);
+    public VerifiedReview(VerifiedUser verifiedUser, int rating, Movie movie) {
+        super((User) verifiedUser, rating, movie);
     }
 
     public VerifiedReview(User user, int rating, String comment, Movie movie) {

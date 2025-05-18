@@ -41,7 +41,7 @@ public class Movie implements Printable {
         return finalRating > 10 ? 10 : finalRating;
     }
 
-    public static Map<String, Movie> getHighestRatedByGenre(){
+    public static Map<String, Movie> getHighestRatedByGenre() {
         Map<String, Movie> highestRatedByGenre = new HashMap<>();
         for (Movie movie : getAllMovies()) {
             for (String genre : movie.getGenres()) {
@@ -54,13 +54,14 @@ public class Movie implements Printable {
         return highestRatedByGenre;
     }
 
-        public static Map<String, Movie> getHighestRatedByGenre(int N, double X){
+    public static Map<String, Movie> getHighestRatedByGenre(int mininumReviewerAmount, double minimumRating) {
         Map<String, Movie> highestRatedByGenre = new HashMap<>();
         for (Movie movie : getAllMovies()) {
             for (String genre : movie.getGenres()) {
                 Movie currentBest = highestRatedByGenre.get(genre);
                 if ((currentBest == null || movie.getAverageRating() > currentBest.getAverageRating())
-                        && movie.getAverageRating() > X && movie.getReviews().size() >= N) {
+                        && movie.getAverageRating() > minimumRating &&
+                        movie.getReviews().size() >= mininumReviewerAmount) {
                     highestRatedByGenre.put(genre, movie);
                 }
             }
@@ -77,6 +78,7 @@ public class Movie implements Printable {
         }
         return reviewers;
     }
+
     // print details
     public void printDetails() {
         System.out.println("Title: " + title);
@@ -122,6 +124,15 @@ public class Movie implements Printable {
         return new ArrayList<>(allMovies);
     }
 
+    public static Movie getSpecificMovie(String title) {
+        for (Movie movie : getAllMovies()) {
+            if (movie.getTitle() == title) {
+                return movie;
+            }
+        }
+        return null;
+    }
+
     // toString
     @Override
     public String toString() {
@@ -131,7 +142,8 @@ public class Movie implements Printable {
     // comparators
     public static Comparator<Movie> byYear = (m1, m2) -> Integer.compare(m1.getYear(), m2.getYear());
 
-    public static Comparator<Movie> byAverageRating = (m1, m2) -> Double.compare(m1.getAverageRating(), m2.getAverageRating());
+    public static Comparator<Movie> byAverageRating = (m1, m2) -> Double.compare(m1.getAverageRating(),
+            m2.getAverageRating());
 
     public static Comparator<Movie> byTitle = (m1, m2) -> m1.getTitle().compareTo(m2.getTitle());
 
