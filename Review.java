@@ -6,7 +6,10 @@ public abstract class Review implements Printable {
     protected Movie movie;
 
     // constructor
-    public Review(User user, int rating, String comment, Movie movie) {
+    public Review(User user, int rating, String comment, Movie movie) throws Exception {
+        if (rating < 1 || rating > 10) {
+            throw new Exception("Rating must be between 0 and 10");
+        }
         this.user = user;
         this.rating = rating;
         this.comment = comment;
@@ -15,7 +18,10 @@ public abstract class Review implements Printable {
         movie.addReview(this);
     }
 
-    public Review(User user, int rating, Movie movie) {
+    public Review(User user, int rating, Movie movie) throws Exception {
+        if (rating < 1 || rating > 10) {
+            throw new Exception("Rating must be between 0 and 10");
+        }
         this.user = user;
         this.rating = rating;
         this.comment = null;
