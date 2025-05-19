@@ -34,11 +34,16 @@ public class Movie implements Printable {
         if (reviews.isEmpty())
             return 0;
         int total = 0;
+        double totalWeight = 0;
         for (Review r : reviews) {
             total += r.getWeightedRating();
+            totalWeight += r.getWeight();
         }
-        double finalRating = (double) total / reviews.size();
-        return finalRating > 10 ? 10 : finalRating;
+
+        double finalRating = (double) total / totalWeight;
+
+        // For good measure
+        return finalRating > 10 ? 10 : finalRating < 1 ? 1 : finalRating;
     }
 
     public static Map<String, Movie> getHighestRatedByGenre() {

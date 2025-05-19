@@ -4,6 +4,7 @@ public abstract class Review implements Printable {
     protected int rating;
     protected String comment;
     protected Movie movie;
+    protected double weight;
 
     // constructor
     public Review(User user, int rating, String comment, Movie movie) throws Exception {
@@ -31,12 +32,18 @@ public abstract class Review implements Printable {
     }
 
     // methods
-    public abstract int getWeightedRating();
+    public int getWeightedRating() {
+        return (int) Math.round((float) this.getRating() * this.weight);
+    }
+
+    public double getWeight() {
+        return this.weight;
+    }
 
     // print details
     public void printDetails() {
         System.out.println(user.getUsername() + " rated " + movie.getTitle() + " with " + rating + "/10"
-        + ((comment != null && !comment.isEmpty()) ? "\nComment: " + comment : ""));
+                + ((comment != null && !comment.isEmpty()) ? "\nComment: " + comment : ""));
     }
 
     // getters
