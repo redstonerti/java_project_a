@@ -58,3 +58,9 @@
 - Removed the initialization of the attributes in the `VerifiedUser` constructor as they are already initialized from `super(username)`
 - Removed the method `searchByTitle(String title)` from the class `Movie` as it is now implemented by the method `getSpecificMovie(String title)`
 - Removed `import java.util.*` from `VerifiedUser` as it is now not used
+
+### Day 6
+
+- Made `getWeightedRating()` a non abstract class in **Review** that multiplies the review's rating with its weight and removed the overrides in **BasicReview** and **Verified Review**
+- Added the `weight` attribute to the **Review** class as well as a `getWeight()` getter
+- Improved the `getAverageRating()` method in the **Movie** class
