@@ -40,16 +40,35 @@ public class Main {
 
         List<Movie> movies = new ArrayList<>(Movie.getAllMovies());
 
-        BasicReview basicReview = new BasicReview(user, 9, movie);
-        BasicReview basicReview2 = new BasicReview(user, 8, Movie.getSpecificMovie("The Dark Knight"));
+        BasicReview basicReview = null;
+        BasicReview basicReview2 = null;
+
+        try {
+            basicReview = new BasicReview(user, 9, movie);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            basicReview2 = new BasicReview(user, 8, Movie.getSpecificMovie("The Dark Knight"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         movie.printDetails();
         System.out.println();
         user.printDetails();
         System.out.println();
-        basicReview.printDetails();
+
+        if (basicReview != null) {
+            basicReview.printDetails();
+        }
+
         System.out.println();
-        basicReview2.printDetails();
+
+        if (basicReview2 != null) {
+            basicReview2.printDetails();
+        }
+
         System.out.println();
         if (verifiedReview != null) {
             verifiedReview.printDetails();
