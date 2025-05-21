@@ -1,4 +1,4 @@
-# JAVA PROJECT B AUEB
+# JAVA PROJECT A AUEB
 
 ## Demo / Usage
 To see a complete example of this framework:
